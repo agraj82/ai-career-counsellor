@@ -182,7 +182,10 @@ if generate_report:
     st.plotly_chart(fig)
 
     graph_path = os.path.join(tempfile.gettempdir(),"graph.png")
-    fig.write_image(graph_path)
+    try:
+        fig.write_image(graph_path)
+    except:
+        graph_path = None    
 
     # ---------------- CAREERS ----------------
 
@@ -386,7 +389,7 @@ if generate_report:
         story.append(Paragraph(f"Confidence: {confidence:.2f}%",styles["Normal"]))
         story.append(Spacer(1,20))
 
-        if os.path.exists(graph_path):
+        if graph_path and os.path.exists(graph_path):
             story.append(Image(graph_path,width=350,height=250))
 
         story.append(Spacer(1,20))
