@@ -7,3 +7,4 @@ reportlab
 xgboost
 lightgbm
 imbalanced-learn
+kaleido
